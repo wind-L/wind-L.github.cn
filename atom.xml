@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.windliu.cn/"/>
-  <updated>2018-09-01T00:44:16.903Z</updated>
+  <updated>2018-09-01T11:18:56.413Z</updated>
   <id>http://www.windliu.cn/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SPP网络（Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition）</title>
+    <link href="http://www.windliu.cn/2018/09/01/SPP%E7%BD%91%E7%BB%9C/"/>
+    <id>http://www.windliu.cn/2018/09/01/SPP网络/</id>
+    <published>2018-09-01T10:09:46.000Z</published>
+    <updated>2018-09-01T11:18:56.413Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="主题介绍"><a href="#主题介绍" class="headerlink" title="主题介绍"></a>主题介绍</h1><p><strong>本片文章介绍了SPP网络的提出背景，工作原理以及相关实验</strong><br>文章基于论文（Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition）的内容进行介绍，主要介绍背景以及原理，实验部分一来内容比较多，二来实验不是本文的重点部分，将简要带过。</p><h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>看过网上一些博客，很多博主在介绍SPP的时候总是在强调SPP能够使得网络输入任意尺寸大小的图片，并没有写为什么要提出SPP网络，让人很容易理解成先有了SPP然后才使得网络能够输入任意尺寸图像。还有的博客专注于SPP对于RCNN的速度提升，容易让人以为SPP是为了改进RCNN效率而提出的。其实不然，论文作者在文章中首先提出的一个问题就是裁剪或变化导致的信息丢失。<br>现在常用的卷积神经网络大部分是固定输入大小的，但是数据集中的图片通常情况下是任意尺寸的。为了适应网络输入需求，要将图片进行crop或者warp操作，crop操作容易导致信息丢失，warp操作容易导致图片内容变形。这种信息的丢失或图片内容的变形在一定程度上影响了网络的准确性。就如下图所示。<br><img src="/img/spp2.jpg" alt="crop and warp"><br>为了解决上面发现的问题，就必须修改网络使得网络能够接受任意大小的图片。细究卷积神经网络的结构我们会发现，卷积层并不限制输入图片大小（输入图片尺寸不一样只会造成feature map的大小不一致，并不影响卷积核的训练），限制图片尺寸的地方在于卷积后的全连接层，全连接层的权值是固定大小的矩阵，需要一个固定长度的特征向量作为输入。<br>那么现在的问题就转化成了如何将卷积出来的尺寸不一致的feature map变成维度固定的特征向量。这里作者就提出了空间金字塔池化（spatial pyramid pooling，SPP），SPP能将不同尺寸大小的feature map池化为一个固定大小的特征向量，从而完美的解决了最初的问题。<br><strong>总结以上，因为crop或者warp操作导致图片信息丢失，所以不得不向网络中输入任意尺寸的图片，为了适应不同尺寸图片得到的不同大小的feature map，提出了SPP。这样的做法相比传统方法增加了信息量，所以得到的结果更好</strong><br>附上论文中网络结构图，上面一行是传统卷积神经网络，下面是加入SPP后的卷积神经网络。<br><img src="/img/spp3.jpg" alt="spp卷积神经网络"></p><h1 id="SPP结构"><a href="#SPP结构" class="headerlink" title="SPP结构"></a>SPP结构</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;主题介绍&quot;&gt;&lt;a href=&quot;#主题介绍&quot; class=&quot;headerlink&quot; title=&quot;主题介绍&quot;&gt;&lt;/a&gt;主题介绍&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;本片文章介绍了SPP网络的提出背景，工作原理以及相关实验&lt;/strong&gt;&lt;br&gt;文章基于论文（Spatia
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://www.windliu.cn/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="spp" scheme="http://www.windliu.cn/tags/spp/"/>
+    
+      <category term="特征金字塔" scheme="http://www.windliu.cn/tags/%E7%89%B9%E5%BE%81%E9%87%91%E5%AD%97%E5%A1%94/"/>
+    
+      <category term="图像分类" scheme="http://www.windliu.cn/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="目标检测" scheme="http://www.windliu.cn/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>CCF第一题</title>
